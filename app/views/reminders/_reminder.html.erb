@@ -1,0 +1,12 @@
+<tr> 
+	<th scope="row"><%= reminder.employee.name %></th> 
+	<td><%= reminder.title %></td> 
+	<td><%= reminder.reminder_at %></td> 
+	<td><%= raw reminder.message.truncate_words(5) %></td> 
+	<td><span class="label label-success"><%= reminder.status %></span></td>
+	<td>
+	  <%= link_to 'Edit', edit_admin_reminder_path(current_admin.id, reminder.id), "data-toggle"=>"modal", "data-target"=>"#myModal", class: "btn btn-info btn-sm glyphicon glyphicon-edit" %>
+	  <%= link_to 'Delete', admin_reminder_path(current_admin.id, reminder.id), data: {confirm: "Do you want delete?"}, method: :delete, class: "btn btn-danger btn-sm glyphicon glyphicon-trash" %>
+	  <%= link_to "Stop", "#", class: "btn btn-success btn-sm  glyphicon glyphicon-stop" %>   
+	</td>  
+</tr>

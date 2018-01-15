@@ -1,0 +1,23 @@
+<div class="main-wrapper">
+  <div class="app" id="app">
+    <%= form_for (@team), url: team_path, method: :patch do |f| %>  
+      <div class="modal-body">
+        <% if @team.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%#= pluralize(@user.errors.count, "error") %><!--  prohibited
+              this article from being saved: -->
+            </h2>
+            <ul>
+              <% @team.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %> 
+        <p><%= f.text_area :name,  :placeholder=> "enter team name", class: "form-control  name-text" %></p>
+      </div>
+        &nbsp; &nbsp; <%= f.submit "Submit", class: "btn btn btn-success reminder-form" %>
+    <% end %>
+  </div>
+</div>

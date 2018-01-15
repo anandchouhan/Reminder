@@ -1,0 +1,51 @@
+<div class="main-wrapper">
+  <div class="app" id="app">        
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <article class="content grid-page">
+      <section class="section">
+        <div class="row sameheight-container">
+          <div class="col-md-12">
+            <p><h3 class="title"> All Employee List</h3></p> 
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover"> 
+                <thead> 
+                  <tr> 
+                  <th>Employee Name</th> 
+                  <th>Employee Email</th> 
+                  <th>Employee Mobile No</th> 
+                  <th>Employee Birth date</th> 
+                  <th>Employee Piccture</th> 
+                  <th>Action</th>
+                  </tr> 
+                </thead> 
+                <tbody> 
+                  <% @employees.each do |employee| %>
+                    <tr> 
+                      <th scope="row"><%= employee.name %></th> 
+                      <td><%= employee.email %></td>
+                      <td><%= employee.contact_no %></td>
+                      <td><%= employee.date_of_birth %></td>
+                      <% if employee.avatar.present? %>
+                        <td><%=image_tag employee.avatar, width: '60px', height: '45px' %></td>
+                      <% else %>
+                        <td>Image not uploaded</td>
+                      <% end %>
+                      <td>
+                        <p><%= link_to 'Edit', edit_admin_employee_path(current_admin.id, employee.id), class: "btn btn-info btn-sm glyphicon glyphicon-edit" %></p>
+                        <%= link_to 'Delete', admin_employee_path(current_admin.id, employee.id), data: {confirm: "Do you want delete?"}, class: "btn btn-danger btn-sm glyphicon glyphicon-trash", method: :delete %> 
+                      </td> 
+                    </tr> 
+                  <% end %>
+                </tbody> 
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%= will_paginate @employees %>
+    </article>
+  </div>
+</div>
+
+<script src="/assets/app.js"></script>
+<script src="/assets/vendor.js"></script>

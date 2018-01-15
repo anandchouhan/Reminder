@@ -1,0 +1,14 @@
+<div class="team-members-form" >
+  <%= form_for (@team), url: team_team_members_path(@team), method: :post do |f| %>
+    <h3>Add team memeber in team</h3> 
+  <div class="selected-iteam-name">
+    <h4>Team name</h4> 
+    <b><%= @team.name %></b>
+  </div>
+  <div class="selected-employee"> 
+    <%= collection_select(:team_member, :employee_id, Employee.all,  :id, :name, {:selected => @team.employee_ids}, {:multiple => true}) %>
+  </div><br>
+  <%= f.submit "Create Team", class: "btn btn-primary" %>
+  <% end %><br>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Information about team</h4>
+      </div>
+      <%= form_for (@team), url: teams_path, remote: true, method: :post do |f| %>
+        <div class="modal-body">
+          <div id="error_explanation">
+
+          </div>
+          <p><%= f.text_area :name,  :placeholder=> "enter team name", class: "form-control input-sm name-text" %></p>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Submit", class: "btn btn btn-success reminder-form" %>
+          <button type="button" class="btn btn-default model-close" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrapper">
+  <div class="app" id="app">
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <article class="content grid-page">
+      <p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">New Team</button></p>
+      <section class="section">
+        <div class="row sameheight-container">
+          <div class="col-md-12">            
+            <div class="table-responsive">  
+              <% if @teams.present? %>
+                <table class="table table-bordered table-hover team_ajax_data"> 
+                  <thead> 
+                    <tr> 
+                      <th>Team Name</th> 
+                      <th>Team Created By</th> 
+                      <th>Action</th> 
+                    </tr> 
+                  </thead> 
+                  <tbody> 
+                    <%= render @teams %> 
+                  </tbody> 
+                </table>
+              <% else %><br>
+                <center>No Teams Found</center>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>        
+  </div>
+</div>
+
+<script type="text/javascript">
+
+</script>

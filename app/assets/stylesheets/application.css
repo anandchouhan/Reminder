@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap-datetimepicker
+ *= require_self
+ */
+
+ 
+.member_box{
+	background-color: Gainsboro;
+}
+
+
+.container.message {
+    margin: 80px auto 0;
+    max-width: 960px;
+    padding-left: 155px;
+}
+.content.grid-page{padding: 10px 35px 80px;}
+
+.team-members-form{
+  background-color: -moz-MenuBarText;
+  width: 380px;
+  border: solid;
+  padding-left: 45px;
+  margin-left: 490px;
+  margin-top: 80px;
+}
+
+#team_member_employee_id{
+	width: 110px;
+}
+
+#reminder_employee_id{
+  color:  olivedrab;
+}
+
+

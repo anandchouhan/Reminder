@@ -1,0 +1,42 @@
+<div class="row centered-form">
+  <%= form_for (@message_template), url: templates_path do |f| %>  
+    <div class="col-xs-12 col-sm-8 col-md-9 col-sm-offset-3 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Template foramte</h3>
+        </div>  
+        <% if @message_template.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%#= pluralize(@user.errors.count, "error") %><!--  prohibited
+              this article from being saved: -->
+            </h2>
+            <ul>
+              <% @message_template.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %> 
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+               <%= f.text_field :title,  :class=> "form-control input-sm", :placeholder=> "Enter title" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-12">
+              <b>Message body</b>
+              <div class="form-group">
+                <%= f.cktext_area :description,    :ckeditor => {:toolbar => 'mini'}  %>
+              </div>
+            </div>
+          </div>
+        <center><%= f.submit "Submit", class: "btn btn-default" %><br>
+      </div>  
+    </div> 
+  <% end %>
+</div>
+

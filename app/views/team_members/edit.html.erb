@@ -1,0 +1,35 @@
+<aside class="sidebar">
+  <div class="sidebar-container">
+    <div class="sidebar-header">
+      <div class="brand">GEReminder Admin </div>
+    </div>
+    <nav class="menu">
+      <ul class="nav metismenu" id="sidebar-menu">
+        <li class="active">
+          <a href="/admins"><i class="glyphicon glyphicon-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a href=" "> <i class="glyphicon glyphicon-user"></i>Employees <i class="glyphicon glyphicon-menu-right"></i> </a>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p>sadfsadfsdaf sadf</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="/teams"><i class="glyphicon glyphicon-users"></i>Teams<i class="glyphicon glyphicon-menu-right"></i></a>
+          <ul>
+            <li><a href="addteam.html">Add Team's Members</a></li>
+            <li><a href="teammember.html">Team's Members</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/admins/<%= current_admin.id %>/reminders"> <i class="glyphicon glyphicon-bell"></i> Reminders</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+
+  

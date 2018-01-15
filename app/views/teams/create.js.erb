@@ -1,0 +1,7 @@
+<% if @team.errors.any? %>
+  $('#error_explanation').append("<%= j render partial: 'teams/error_message', locals: {team: @team } %>");
+<% else %>
+	$('.model-close').click();   
+	$(".team_ajax_data tbody").prepend("<%= escape_javascript(render @team ) %>");
+	$('.name-text').val('');
+<% end %>

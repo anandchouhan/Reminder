@@ -1,0 +1,43 @@
+<div class="main-wrapper">
+  <div class="app" id="app">
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+      <article class="content grid-page">
+        <div class="title-block">
+          <h3 class="title">Team Member's</h3>
+        </div>
+        <section class="section">
+          <div class="row sameheight-container">
+            <div class="col-md-12">
+              <section id="team" class="parallax-section">
+                <div class="container">
+                  <% @teams.each do |team| %>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12">
+                        <% next if team.employees.blank? %>
+                        <div class="section-title">
+                            <h3 class="heading-main"><%= team.name %></h3>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <% team.employees.each do |member| %>
+                        <div class="col-md-3 col-sm-4 wow fadeInUp">
+                          <div class="team-wrapper">
+                            <%= image_tag "product-img.png", class: "img-responsive", alt: "team img" %>
+                              <div class="team-des">
+                                <h4><%= member.name %></h4>
+                                <h3>Wordpress DEveloper</h3>
+                              </div>
+                          </div>
+                        </div>
+                      <% end %> 
+                    </div>
+                    <hr>
+                  <% end %>
+                </div>
+              </section> 
+            </div>    
+        </section>
+      </article>
+    </div>
+  </div>
+</div>

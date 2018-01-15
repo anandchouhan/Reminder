@@ -1,0 +1,74 @@
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Set Reminder information</h4>
+      </div>
+      <%= form_for (@reminder), url: admin_reminders_path, remote: true, method: :post do |f| %>
+        <div class="modal-body">
+          <div id="error_explanation">
+          
+          </div>
+          <p><%= f.text_field :title,   :placeholder=> "enter reminder's title", class: "reminder-text form-control input"  %></p>
+          <p><%= f.text_field :reminder_at, :placeholder=> "select reminder date", :class => "datetimepicker reminder-date-text form-control input"  %></p>
+          <b>Message body</b>
+          <p><%= f.cktext_area :message,   :placeholder=> "set message for reminder", :ckeditor => {:toolbar => 'mini'},  class: "message-text"  %></p>
+
+          <p><%= f.collection_select  :employee_id, Employee.all, :id, :name,  {prompt: 'Select employee'}, class: "form-control" %></p>
+
+          <p><%= f.select :status,  options_for_select(Reminder.statuses.map {|k, v| [k.humanize.capitalize, v] } ), {prompt: 'Select status'}, class: "form-control" %></p>
+          <p><%= f.collection_select  :message_template_id,  MessageTemplate.all, :id, :title,  {prompt: 'Select template'}, class: "form-control" %></p>
+
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Submit", class: "btn btn-default reminder-form" %>
+          <button type="button" class="btn btn-default model-close" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="main-wrapper">
+  <div class="app" id="app">
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <article class="content grid-page">
+
+      <section class="section">
+        <div class="row sameheight-container">
+          <div class="col-md-12">
+            <p><button type="button" class=" pull-right btn btn-primary" data-toggle="modal" data-target="#myModal">Set reminder</button></p><br><br>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+             model
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover reminder_ajax_data"> 
+                <thead> 
+                  <tr> 
+                    <th>Title</th> 
+                    <th>Employee Name</th> 
+                    <th>Reminder time</th> 
+                    <th>Message</th>
+                    <th>Status</th> 
+                    <th>Action</th>
+                  </tr> 
+                </thead> 
+                <tbody> 
+                  <%= render @reminders %> 
+                </tbody> 
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%= will_paginate @reminders %>
+    </article>
+  </div>
+</div>
+
+<script src="/assets/app.js"></script>
+<script src="/assets/vendor.js"></script>
+<script src="/assets/bootstrap-datetimepicker.js"></script>
+

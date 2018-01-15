@@ -1,0 +1,10 @@
+<% if @reminder.errors.any? %>
+  $('#error_explanation').append("<%= j render partial: 'reminders/error_messages', locals: {reminder: @reminder } %>");
+<% else %>
+	$('.model-close').click();   
+	$(".reminder_ajax_data tbody").prepend("<%= escape_javascript(render @reminder ) %>");
+	$('.modal-backdrop').remove();
+	$('.reminder-text').val('');
+	$('.reminder-date-text').val('');
+	$('.message-text').val('');
+<% end %>
